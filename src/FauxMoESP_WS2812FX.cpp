@@ -9,7 +9,7 @@
  */
 #include <credentials.h>
 
-#define SERIAL_BAUDRATE 115200
+#define SERIAL_BAUDRATE 9600
 
 fauxmoESP fauxmo;
 /**
@@ -29,7 +29,7 @@ int BRI = 200;
  * NEO_RGB     Pixels are wired for RGB bitstream (v1 FLORA pixels, not v2)
  * NEO_RGBW    Pixels are wired for RGBW bitstream (NeoPixel RGBW products)
  */
-WS2812FX ws2812fx = WS2812FX(LED_COUNT, LED_PIN, NEO_GRBW + NEO_KHZ800);
+WS2812FX ws2812fx = WS2812FX(LED_COUNT, LED_PIN, NEO_GRB + NEO_KHZ800);
 
 /**
  * LEDs are off by default
