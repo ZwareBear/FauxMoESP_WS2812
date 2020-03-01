@@ -2,7 +2,7 @@
 #include <Adafruit_NeoPixel.h>
 #include <ESP8266WiFi.h>
 #include "fauxmoESP.h"
-#include <WS2812FX-master/WS2812FX.h>
+#include <WS2812FX.h>
 
 /**
  * Set your SSID and WIFI password
@@ -64,7 +64,7 @@ void wifiSetup() {
  * @param device_name Name of the Fauxmo device
  * @param state       boolean with true/false depending on whether the device should be on or off.
  */
-void callback(uint8_t device_id, const char * device_name, bool state) {
+void callback(unsigned char device_id, const char * device_name, bool state, unsigned char value) {
         Serial.printf("[MAIN] %s state: %s\n", device_name, state ? "ON" : "OFF");
 
         //FX_MODE_RAINBOW_CYCLE 'Alexa, turn rainbow lights on'
@@ -161,7 +161,7 @@ void setup() {
         fauxmo.addDevice("kitt lights");
         fauxmo.addDevice("rainbow lights");
         fauxmo.addDevice("breathe lights");
-        fauxmo.onMessage(callback);
+        fauxmo.onSetState(callback);
 }
 
 void loop() {
